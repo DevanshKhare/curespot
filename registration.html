@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../backend/public/images/logo.png"
+    />
+    <title>CureSpot</title>
+    <style>
+      body {
+        background-color: #021a22;
+        color: rgb(0, 255, 255);
+      }
+
+      #main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      #logo {
+        height: 12rem;
+        width: 12rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #textbox {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        align-self: center;
+        border-radius: 56px;
+        background: #021a22;
+        box-shadow: inset 5px 5px 12px #010a0e, inset -5px -5px 12px #032a36;
+        border: none;
+        height: 3rem;
+        width: 50%;
+        text-align: center;
+        line-height: 40px;
+      }
+
+      /* all */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      :root {
+        --main-blue: #71b7e6;
+        --main-purple: #9b59b6;
+        --main-grey: #ccc;
+        --sub-grey: #d9d9d9;
+      }
+
+      /* container and form */
+      .container {
+        margin-top: 5rem;
+        max-width: 700px;
+        width: 100%;
+        background: #021a22;
+        padding: 25px 30px;
+        border-radius: 5px;
+      }
+
+      .container .title {
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .container .title::before {
+        content: "";
+        position: absolute;
+        height: 3.5px;
+        width: 30px;
+        background: linear-gradient(
+          135deg,
+          var(--main-blue),
+          var(--main-purple)
+        );
+        left: 0;
+        bottom: 0;
+      }
+
+      .container form .user__details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+      }
+
+      /* inside the form user details */
+      form .user__details .input__box {
+        width: calc(100% / 2 - 20px);
+        margin-bottom: 15px;
+      }
+
+      .user__details .input__box .details {
+        font-weight: 500;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .user__details .input__box input {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        background: #021a22;
+        box-shadow: inset 5px 5px 12px #010a0e, inset -5px -5px 12px #032a36;
+        padding-left: 15px;
+        font-size: 16px;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+        color: white;
+      }
+
+      .user__details .input__box input:focus,
+      .user__details .input__box input:valid {
+        border-color: var(--main-purple);
+      }
+
+      /* inside the form gender details */
+
+      form .gender__details .gender__title {
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      form .gender__details .category {
+        display: flex;
+        width: 80%;
+        margin: 15px 0;
+        justify-content: space-between;
+      }
+
+      .gender__details .category label {
+        display: flex;
+        align-items: center;
+      }
+
+      .gender__details .category .dot {
+        height: 18px;
+        width: 18px;
+        background: var(--sub-grey);
+        border-radius: 50%;
+        margin: 10px;
+        border: 5px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #dot-1:checked ~ .category .one,
+      #dot-2:checked ~ .category .two,
+      #dot-3:checked ~ .category .three {
+        border-color: var(--sub-grey);
+        background: var(--main-purple);
+      }
+
+      form input[type="radio"] {
+        display: none;
+      }
+
+      /* submit button */
+      form .button {
+        height: 45px;
+        margin: 45px 0;
+      }
+
+      form .button input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 5px;
+        background: linear-gradient(
+          135deg,
+          var(--main-blue),
+          var(--main-purple)
+        );
+        transition: all 0.3s ease;
+      }
+
+      form .button input:hover {
+        background: linear-gradient(
+          -135deg,
+          var(--main-blue),
+          var(--main-purple)
+        );
+      }
+
+      @media only screen and (max-width: 584px) {
+        .container {
+          max-width: 100%;
+        }
+
+        form .user__details .input__box {
+          margin-bottom: 15px;
+          width: 100%;
+        }
+
+        form .gender__details .category {
+          width: 100%;
+        }
+
+        .container form .user__details {
+          max-height: 300px;
+          overflow-y: scroll;
+        }
+
+        .user__details::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+      .btn{
+        border-radius: 5px;
+        color:rgb(0, 255, 255) ;
+        width: 10rem;
+        height: 3rem;
+        margin: 5px;
+        border: none;
+background: #021a22;
+box-shadow:  5px 5px 10px #010a0e,
+             -5px -5px 10px #032a36;
+      }
+      .btn:hover{
+        border-radius: 5px;
+        background: #021a22;
+box-shadow: inset 5px 5px 10px #010a0e,
+            inset -5px -5px 10px #032a36;
+      }
+      #heading{
+        color: #0ff;
+        padding-left: 1rem;
+        font-size: 2rem;
+        letter-spacing: 0.6rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main">
+      <p id="heading">CureSpot</p>
+      <div class="container">
+        <div class="title">Registration</div>
+        <form action="/users/register" method="post">
+          <div class="user__details">
+            <div class="input__box">
+              <span class="details">Name</span>
+              <input
+                type="text"
+                placeholder="E.g: John "
+                required
+                name="name"
+              />
+            </div>
+            <div class="input__box">
+              <span class="details">Age</span>
+              <input type="number" placeholder="E.g: 25" required name="age" />
+            </div>
+            <div class="input__box">
+              <span class="details">Phone Number</span>
+              <input type="text" required name="phone" />
+            </div>
+            <div class="input__box">
+              <span class="details" >Unique Id</span>
+              <input type="text" name="uid" required />
+            </div>
+            <div class="input__box">
+              <span class="details" >City</span>
+              <input type="text" name="city" required />
+            </div>
+            <div class="input__box">
+              <span class="details" >Are you diabetic?</span>
+              <input type="text" name="diabetes" required />
+            </div>
+            <div class="input__box">
+              <span class="details" >Do you have blood pressure related problems?</span>
+              <input type="text" name="bloodpressure" required />
+            </div>
+            <div id="camera">
+              <input type="button" id="start-camera" value="start camera" onclick="handleclick()" class="btn"/>
+              <input type="button" id="click-photo" value="Click Photo" onclick="handleclose()" class="btn"/>
+              <video id="video" width="320" height="240" autoplay style="display: none;"></video>
+              <canvas
+                id="canvas"
+                width="320"
+                height="240"
+                style="display: none"
+              ></canvas>
+            </div>
+            <input type="text" name="image" id="image" style="display: none"/>
+          </div>
+          <div class="gender__details">
+            <input type="radio" name="gender" id="dot-1" value="male" />
+            <input type="radio" name="gender" id="dot-2" value="female" />
+            <input type="radio" name="gender" id="dot-3" value="na" />
+            <span class="gender__title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+                <span class="dot one"></span>
+                <span>Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span>Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span>Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Register" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      let camera_button = document.querySelector("#start-camera");
+      let video = document.querySelector("#video");
+      let click_button = document.querySelector("#click-photo");
+      let canvas = document.querySelector("#canvas");
+        function handleclick(){
+            document.getElementById("video").style.display="block";
+        }
+        function handleclose(){
+            document.getElementById("video").style.display="none";
+        }
+      camera_button.addEventListener("click", async function () {
+        let stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+        video.srcObject = stream;
+      });
+
+      click_button.addEventListener("click", function () {
+        canvas
+          .getContext("2d")
+          .drawImage(video, 0, 0, canvas.width, canvas.height);
+        let image_data_url = canvas.toDataURL("image/jpeg");
+
+        // data url of the image
+        document.getElementById("image").value=image_data_url;
+      });
+    </script>
+  </body>
+</html>
